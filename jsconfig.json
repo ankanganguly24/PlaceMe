@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@/*": [
+                "./*"
+            ]
+        },
+        "strict": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "strictNullChecks": true,
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
