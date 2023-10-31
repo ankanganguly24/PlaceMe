@@ -8,12 +8,13 @@
         --background: hsl(0, 0%, 100%);
         --primary: #2c328f;
         --secondary: #f6c205;
+        --border: #b9b9b9;
     }
 }
 
 @layer base {
     * {
-        @apply border-border;
+        @apply border-border
     }
 
     body {
@@ -23,15 +24,13 @@
 
 ::-webkit-scrollbar {
     width: 7px;
-    background-color: var(--background);
+    background-color: rgb(32, 36, 39);
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background-color: white;
-    border-radius: 5px;
+    background-color: rgb(21, 77, 77);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--accent);
+    background-color: rgb(23, 98, 119);
 }

@@ -1,7 +1,18 @@
 import { AxiosError } from "axios";
+import clsx from "clsx";
 import { MongooseError } from "mongoose";
 import { NextResponse } from "next/server";
+import { twMerge } from "tailwind-merge";
 import { ZodError } from "zod";
+
+/**
+ *
+ * @param  {import("clsx").ClassValue[]} inputs
+ * @returns
+ */
+export function cn(...inputs) {
+    return twMerge(clsx(inputs));
+}
 
 /**
  * @param {number} ms - milliseconds to wait
