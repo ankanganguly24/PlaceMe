@@ -33,8 +33,7 @@ function NavbarHome() {
             onMenuOpenChange={setIsMenuOpen}
             shouldHideOnScroll
             classNames={{
-                base:
-                    "bg-primary z-50" + (pathname === "/" ? "fixed" : "sticky"),
+                base: "bg-primary z-50 sticky py-4",
                 item: "font-semibold uppercase",
             }}
         >
@@ -49,19 +48,23 @@ function NavbarHome() {
                         className="flex cursor-pointer items-center gap-2"
                         onClick={() => router.push("/")}
                     >
-                        <p className="text-xl font-bold text-white">
+                        <p className="text-3xl font-bold text-white">
                             {siteConfig.name}
                         </p>
                     </button>
                 </NavbarBrand>
             </NavbarContent>
 
-            <NavbarContent className="hidden gap-4 sm:flex" justify="center">
+            <NavbarContent
+                className="hidden items-center gap-4 sm:flex"
+                justify="center"
+            >
                 {items.mainNav.length > 0
                     ? items.mainNav.map((item, index) => (
-                          <NavbarItem key={index} className="text-sm">
+                          <NavbarItem key={index}>
                               <Link
-                                  className="text-sm text-white"
+                                  isDisabled={index === 2}
+                                  className="text-md text-white"
                                   as={NextLink}
                                   href={item.href}
                               >
@@ -75,7 +78,7 @@ function NavbarHome() {
                         <DropdownTrigger>
                             <Button
                                 disableRipple
-                                className="bg-transparent p-0 text-sm font-semibold uppercase text-white data-[hover=true]:bg-transparent"
+                                className="text-md bg-transparent p-0 font-semibold uppercase text-white data-[hover=true]:bg-transparent"
                                 endContent={
                                     <Icons.chevronDown className="h-4 w-4" />
                                 }

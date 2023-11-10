@@ -11,11 +11,11 @@ function LoginButton({ className, ...props }) {
     return (
         <Button
             className={cn(
-                "group flex h-9 items-center gap-2 text-sm font-semibold",
+                "group flex h-9 items-center gap-2 text-sm font-semibold bg-secondary",
                 className
             )}
             color="default"
-            radius="none"
+            radius="md"
             onPress={() => router.push("/auth")}
             {...props}
         >
