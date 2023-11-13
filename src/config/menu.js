@@ -1,41 +1,20 @@
 export const homeMenuConfig = {
     mainNav: [
         {
-            title: "Blogs",
-            href: "/blogs",
+            title: "Find Jobs",
+            href: "/",
         },
         {
-            title: "Courses",
-            href: "/courses",
+            title: "About Us",
+            href: "/about",
         },
         {
-            title: "Music",
-            href: "/music",
+            title: "Messages",
+            href: "/messages",
         },
-        {
-            title: "FAQ",
-            href: "/faq",
-        },
+        
     ],
     subNav: [
-        {
-            title: "Hire Me",
-            description: "Hire me to build your next project.",
-            href: "/projects/create",
-            icon: "command",
-        },
-        {
-            title: "Announcements",
-            description: "Read our latest announcements.",
-            href: "/announcements",
-            icon: "flag",
-        },
-        {
-            title: "Report a Bug",
-            description: "Found a bug? Let us know so we can fix it.",
-            href: "/bug",
-            icon: "bug",
-        },
         {
             title: "Privacy Policy",
             description: "Read our privacy policy to learn more.",
