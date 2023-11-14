@@ -7,7 +7,7 @@ const jobs = [
             "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
         // Write a random epoch time in milliseconds
         createdAt: 1620338635,
-        image: "https://images.unsplash.com/photo-1620338635-4b0b0f5b4b0e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJvbnRlbmQlMjBkZXZlbG9wZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+        image: "https://picsum.photos/seed/picsum/200/200",
     },
     {
         title: "Senior Backend Developer",
@@ -15,7 +15,7 @@ const jobs = [
             "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
         // Write a random epoch time in milliseconds
         createdAt: 1620338635,
-        image: "https://images.unsplash.com/photo-1620338635-4b0b0f5b4b0e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJvbnRlbmQlMjBkZXZlbG9wZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+        image: "https://picsum.photos/seed/picsum/200/200",
     },
     {
         title: "Senior Fullstack Developer",
@@ -23,7 +23,7 @@ const jobs = [
             "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
         // Write a random epoch time in milliseconds
         createdAt: 1620338635,
-        image: "https://images.unsplash.com/photo-1620338635-4b0b0f5b4b0e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJvbnRlbmQlMjBkZXZlbG9wZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+        image: "https://picsum.photos/seed/picsum/200/200",
     },
     {
         title: "Senior Frontend Developer",
@@ -31,14 +31,14 @@ const jobs = [
             "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
         // Write a random epoch time in milliseconds
         createdAt: 1620338635,
-        image: "https://images.unsplash.com/photo-1620338635-4b0b0f5b4b0e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJvbnRlbmQlMjBkZXZlbG9wZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+        image: "https://picsum.photos/seed/picsum/200/200",
     },
 ];
 
 function Jobs() {
     return (
         <section className="flex items-center justify-center p-5">
-            <div className="w-full max-w-6xl ">
+            <div className="flex w-full max-w-6xl flex-col gap-5 ">
                 {jobs.map((job, index) => (
                     <Jobcard
                         key={index}

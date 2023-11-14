@@ -6,6 +6,7 @@ function Page() {
         <>
             <Hero />
             <Jobs />
+            
         </>
     );
 }

@@ -4,7 +4,7 @@ import { BitFieldPermissions } from "./config/const";
 
 export default authMiddleware({
     ignoredRoutes: ["/", "/api/users", "/og.jpg", "/favicon.ico"],
-    publicRoutes: ["/signin", "/signup", "/verification(.*)"],
+    publicRoutes: ["/signin", "/signup","/about", "/verification(.*)"],
     async afterAuth(auth, req) {
         const url = new URL(req.nextUrl.origin);
 
