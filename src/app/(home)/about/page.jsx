@@ -22,6 +22,7 @@ function About() {
                             <Image
                                 className="pointer-events-none pt-3"
                                 src={vision1.src}
+                                alt="vision"
                                 width={400}
                                 height={400}
                                 priority
@@ -41,6 +42,7 @@ function About() {
                             <Image
                                 className="pointer-events-none pt-3"
                                 src={mission1.src}
+                                alt="mission"
                                 width={400}
                                 height={400}
                                 priority
@@ -59,6 +61,7 @@ function About() {
                             <Image
                                 className="pointer-events-none pt-3"
                                 src={value1.src}
+                                alt="value"
                                 width={400}
                                 height={400}
                                 priority
