@@ -47,3 +47,16 @@ export function handleError(err) {
             message: "Internal Server Error!",
         });
 }
+
+/**
+ * @param {number} ms - milliseconds to format
+ * @returns {string} formatted timestamp
+ */
+export function formatTimestampToDate(ms) {
+    const date = new Date(ms);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+}

@@ -12,7 +12,6 @@ export const homeMenuConfig = {
             title: "Messages",
             href: "/messages",
         },
-        
     ],
     subNav: [
         {

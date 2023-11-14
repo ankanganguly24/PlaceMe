@@ -15,11 +15,18 @@ const config = {
     settings: {
         tailwindcss: {
             callees: ["cn"],
-            config: "./tailwind.config.ts",
+            config: "./tailwind.config.js",
         },
         next: {
             rootDir: ["./src/"],
         },
+        ignorePatterns: [
+            "node_modules/",
+            ".next/",
+            "assets/",
+            "public/",
+            "drizzle/",
+        ],
     },
 };
 
