@@ -5,40 +5,36 @@ const jobs = [
         title: "Senior Frontend Developer",
         description:
             "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
-        // Write a random epoch time in milliseconds
-        createdAt: 1620338635,
-        image: "https://images.unsplash.com/photo-1620338635-4b0b0f5b4b0e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJvbnRlbmQlMjBkZXZlbG9wZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+        createdAt: 1636881645000,
+        image: "https://picsum.photos/200/200",
     },
     {
         title: "Senior Backend Developer",
         description:
             "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
-        // Write a random epoch time in milliseconds
-        createdAt: 1620338635,
-        image: "https://images.unsplash.com/photo-1620338635-4b0b0f5b4b0e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJvbnRlbmQlMjBkZXZlbG9wZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+        createdAt: 1591372117000,
+        image: "https://picsum.photos/200/200",
     },
     {
         title: "Senior Fullstack Developer",
         description:
             "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
-        // Write a random epoch time in milliseconds
-        createdAt: 1620338635,
-        image: "https://images.unsplash.com/photo-1620338635-4b0b0f5b4b0e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJvbnRlbmQlMjBkZXZlbG9wZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+        createdAt: 1025063798000,
+        image: "https://picsum.photos/200/200",
     },
     {
         title: "Senior Frontend Developer",
         description:
             "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
-        // Write a random epoch time in milliseconds
-        createdAt: 1620338635,
-        image: "https://images.unsplash.com/photo-1620338635-4b0b0f5b4b0e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJvbnRlbmQlMjBkZXZlbG9wZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+        createdAt: 1075371950090,
+        image: "https://picsum.photos/200/200",
     },
 ];
 
 function Jobs() {
     return (
         <section className="flex items-center justify-center p-5">
-            <div className="w-full max-w-6xl ">
+            <div className="flex w-full max-w-6xl flex-col items-center gap-4">
                 {jobs.map((job, index) => (
                     <Jobcard
                         key={index}

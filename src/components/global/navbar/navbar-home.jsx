@@ -17,14 +17,13 @@ import {
     NavbarMenuToggle,
 } from "@nextui-org/react";
 import NextLink from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Icons } from "../../icons/icons";
 import LoginButton from "../buttons/login-button";
 
 function NavbarHome() {
     const router = useRouter();
-    const pathname = usePathname();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 

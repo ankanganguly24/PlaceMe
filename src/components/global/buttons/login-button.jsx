@@ -11,12 +11,12 @@ function LoginButton({ className, ...props }) {
     return (
         <Button
             className={cn(
-                "group flex h-9 items-center gap-2 text-sm font-semibold bg-secondary",
+                "group flex h-9 items-center gap-2 bg-secondary text-sm font-semibold",
                 className
             )}
             color="default"
             radius="md"
-            onPress={() => router.push("/auth")}
+            onPress={() => router.push("/signin")}
             {...props}
         >
             <Icons.podcast className="h-4 w-4 transition-all ease-in-out group-hover:h-0 group-hover:w-0" />

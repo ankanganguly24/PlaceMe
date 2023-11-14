@@ -1,5 +1,7 @@
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 import ClientProvider from "../components/providers/client";
+import ServerProvider from "../components/providers/server";
 import { siteConfig } from "../config/site";
 
 export const metadata = {
@@ -50,10 +52,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
-            <body>
-                <ClientProvider>{children}</ClientProvider>
-            </body>
-        </html>
+        <ServerProvider>
+            <html lang="en">
+                <body>
+                    <ClientProvider>{children}</ClientProvider>
+                    <Toaster />
+                </body>
+            </html>
+        </ServerProvider>
     );
 }

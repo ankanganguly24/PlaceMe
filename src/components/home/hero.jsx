@@ -1,8 +1,8 @@
 "use client";
 
 import Item1 from "@/public/item1.png";
-import { Image, Select, SelectItem, SelectSection } from "@nextui-org/react";
-import NextImage from "next/image";
+import { Select, SelectItem } from "@nextui-org/react";
+import Image from "next/image";
 
 const categories = [
     {
@@ -128,9 +128,9 @@ function Hero() {
                 <Image
                     className="pointer-events-none pt-3"
                     src={Item1.src}
+                    alt="Picture"
                     width={400}
                     height={400}
-                    as={NextImage}
                     priority
                 />
             </div>

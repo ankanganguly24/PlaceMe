@@ -4,22 +4,20 @@ import { User } from "../../models/User";
 /**
  * @param {object} user - user object
  * @param {string} user.email - user's email
- * @param {string} user.firstName - user's first name
- * @param {string} user.lastName - user's last name
+ * @param {string} user.username - user's username
  * @param {string} user.userId - user's id
  * @param {string} user.imageUrl - user's image url
  */
 export async function createUser(user) {
-    const { email, firstName, lastName, userId, imageUrl } = user;
+    const { email, imageUrl, userId, username } = user;
 
     await db.connect();
 
     const newUser = await User.create({
         email,
-        firstName,
-        lastName,
-        userId,
         imageUrl,
+        userId,
+        username,
     });
 
     await db.disconnect();
@@ -76,23 +74,18 @@ export async function findUserById(userId) {
 
 /**
  * @param {object} user - user object
- * @param {string} user.email - user's email
  * @param {string} user.username - user's username
- * @param {string} user.password - user's password
+ * @param {string} user.imageUrl - user's image url
  * @param {string} user.id - user's id
  */
 export async function updateUser(user) {
-    const { email, id, password, username } = user;
+    const { id, username, imageUrl } = user;
 
     await db.connect();
 
-    const updatedUser = await User.findByIdAndUpdate(
-        id,
-        {
-            email,
-            password,
-            username,
-        },
+    const updatedUser = await User.findOneAndUpdate(
+        { userId: id },
+        { username, imageUrl },
         { new: true }
     );
 

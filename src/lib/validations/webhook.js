@@ -8,8 +8,7 @@ export const webhookSchema = z.object({
 
 export const userWebhookSchema = z.object({
     id: z.string(),
-    first_name: z.string(),
-    last_name: z.string(),
+    username: z.string(),
     profile_image_url: z.string().nullable(),
     email_addresses: z.array(
         z.object({
@@ -17,11 +16,10 @@ export const userWebhookSchema = z.object({
         })
     ),
     private_metadata: z.object({
-        roles: z.array(z.string()),
-        permissions: z.number(),
+        roles: z.array(z.string()).optional(),
+        permissions: z.number().optional(),
     }),
 });
-
 export const userDeleteWebhookSchema = z.object({
     id: z.string(),
     delete: z.boolean().optional(),

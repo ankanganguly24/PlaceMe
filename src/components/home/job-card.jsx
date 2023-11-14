@@ -1,15 +1,17 @@
 "use client";
 
+import { formatTimestampToDate } from "@/src/lib/utils";
 import { Button, Card, CardBody, Image } from "@nextui-org/react";
 
 function Jobcard({ title, description, image, createdAt }) {
     return (
         <Card>
             <CardBody>
-                <div className="flex  items-center justify-between gap-4">
+                <div className="flex  items-center justify-between gap-4 px-5">
                     <div className="flex items-center gap-5">
                         <Image
                             src={image}
+                            alt="company logo"
                             radius="full"
                             width={50}
                             height={50}
@@ -24,7 +26,7 @@ function Jobcard({ title, description, image, createdAt }) {
                                 <span className="text-gray-500">
                                     Posted on{" "}
                                 </span>
-                                {new Date(createdAt).toLocaleDateString()}
+                                {formatTimestampToDate(createdAt)}
                             </p>
                         </div>
                     </div>

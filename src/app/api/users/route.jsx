@@ -1,11 +1,12 @@
 import { env } from "@/env.mjs";
-import { createUser } from "@/src/lib/mongo/user";
+import { createUser, updateUser } from "@/src/lib/mongo/user";
 import {
     userDeleteSchema,
     userWebhookSchema,
     webhookSchema,
 } from "@/src/lib/validations/webhook";
 import { NextResponse } from "next/server";
+import { Webhook } from "svix";
 
 export async function POST(req) {
     const payload = await req.json();
@@ -33,24 +34,18 @@ export async function POST(req) {
     switch (type) {
         case "user.created": {
             try {
-                const {
-                    email_addresses,
-                    first_name,
-                    id,
-                    last_name,
-                    profile_image_url,
-                } = userWebhookSchema
-                    .omit({
-                        private_metadata: true,
-                    })
-                    .parse(data);
+                const { email_addresses, id, profile_image_url, username } =
+                    userWebhookSchema
+                        .omit({
+                            private_metadata: true,
+                        })
+                        .parse(data);
 
                 await createUser({
                     email: email_addresses[0].email_address,
-                    firstName: first_name,
-                    lastName: last_name,
                     userId: id,
                     imageUrl: profile_image_url,
+                    username,
                 });
 
                 return NextResponse.json({
@@ -63,13 +58,14 @@ export async function POST(req) {
         }
 
         case "user.updated": {
-            const {
+            const { id, profile_image_url, username } =
+                userWebhookSchema.parse(data);
+
+            await updateUser({
                 id,
-                email_addresses,
-                profile_image_url,
                 username,
-                private_metadata,
-            } = userWebhookSchema.parse(data);
+                imageUrl: profile_image_url,
+            });
 
             return NextResponse.json({
                 code: 200,
