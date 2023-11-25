@@ -4,6 +4,7 @@ import { MongooseError } from "mongoose";
 import { NextResponse } from "next/server";
 import { twMerge } from "tailwind-merge";
 import { ZodError } from "zod";
+import { BitFieldPermissions } from "../config/const";
 
 /**
  *
@@ -59,4 +60,9 @@ export function formatTimestampToDate(ms) {
     const year = date.getFullYear();
 
     return `${day}/${month}/${year}`;
+}
+
+export function hasPermission(userPermissions, requiredPermissions) {
+    if (userPermissions & BitFieldPermissions.Administrator) return true;
+    return (userPermissions & requiredPermissions) === requiredPermissions;
 }

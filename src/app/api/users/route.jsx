@@ -73,16 +73,6 @@ export async function POST(req) {
             });
         }
 
-        case "user.deleted": {
-            const { id } = userDeleteSchema.parse(data);
-
-            return NextResponse.json({
-                code: 200,
-                message: "Ok",
-                data: JSON.stringify(id),
-            });
-        }
-
         default: {
             return NextResponse.json({
                 code: 400,

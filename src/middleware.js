@@ -1,10 +1,18 @@
 import { authMiddleware, clerkClient } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { BitFieldPermissions } from "./config/const";
+import { hasPermission } from "./lib/utils";
 
 export default authMiddleware({
     ignoredRoutes: ["/", "/api/users", "/og.jpg", "/favicon.ico"],
-    publicRoutes: ["/signin", "/signup","/about", "/verification(.*)"],
+    publicRoutes: [
+        "/signin",
+        "/signup",
+        "/about",
+        "/privacy",
+        "/tos",
+        "/verification(.*)",
+    ],
     async afterAuth(auth, req) {
         const url = new URL(req.nextUrl.origin);
 

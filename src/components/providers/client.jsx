@@ -2,10 +2,19 @@
 
 import { NextUIProvider } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function ClientProvider({ children }) {
     const router = useRouter();
-    return <NextUIProvider navigate={router.push}>{children}</NextUIProvider>;
+    const [queryClient] = useState(() => new QueryClient());
+    return (
+        <NextUIProvider navigate={router.push}>
+            <QueryClientProvider client={queryClient}>
+                {children}
+            </QueryClientProvider>
+        </NextUIProvider>
+    );
 }
 
 export default ClientProvider;

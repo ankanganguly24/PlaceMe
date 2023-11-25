@@ -55,7 +55,10 @@ export default function RootLayout({ children }) {
         <ServerProvider>
             <html lang="en">
                 <body>
-                    <ClientProvider>{children}</ClientProvider>
+                    <ClientProvider>
+                        {children}
+                        <Toaster />
+                    </ClientProvider>
                     <Toaster />
                 </body>
             </html>
