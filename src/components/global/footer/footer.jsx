@@ -13,11 +13,11 @@ const Footer = () => {
                     <div className="flex gap-2">
                         <a href="https://www.instagram.com/inspiriaindia/?hl=en">
                             {" "}
-                            <FaInstagramSquare size={50} />{" "}
+                            <FaInstagramSquare size={35} />{" "}
                         </a>
                         <a href="https://www.facebook.com/inspiriaindia">
                             {" "}
-                            <FaFacebook size={50} />{" "}
+                            <FaFacebook size={35} />{" "}
                         </a>
                     </div>
                     <a href="https://www.inspiria.edu.in/">
@@ -25,8 +25,8 @@ const Footer = () => {
                             className="pointer-events-none"
                             src={footer1.src}
                             alt="mission"
-                            width={200}
-                            height={200}
+                            width={150}
+                            height={150}
                             priority
                         />
                     </a>

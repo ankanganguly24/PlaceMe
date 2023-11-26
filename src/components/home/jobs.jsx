@@ -33,8 +33,8 @@ const jobs = [
 
 function Jobs() {
     return (
-        <section className="flex items-center justify-center p-5">
-            <div className="flex w-full max-w-6xl flex-col items-center gap-4">
+        <section className="flex items-center justify-center p-8 ">
+            <div className="flex w-full max-w-6xl flex-col items-center gap-8">
                 {jobs.map((job, index) => (
                     <Jobcard
                         key={index}

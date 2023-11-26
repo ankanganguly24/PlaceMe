@@ -1,7 +1,7 @@
 "use client";
 
 import Item1 from "@/public/item1.png";
-import { Select, SelectItem } from "@nextui-org/react";
+import { Button, Select, SelectItem } from "@nextui-org/react";
 import Image from "next/image";
 
 const categories = [
@@ -79,62 +79,77 @@ const departments = [
 
 function Hero() {
     return (
-        <section>
-            <div className="flex items-center justify-evenly gap-6">
-                <div className="flex w-full max-w-lg flex-col gap-5 ">
-                    <p className="text-center text-4xl font-bold">
-                        Find your next job <br />
-                        from{" "}
-                        <span className="bg-gradient-to-r from-yellow-500 via-amber-300 to-yellow-300 bg-clip-text text-transparent">
-                            here
-                        </span>
-                        .
-                    </p>
+        <>
+            <section>
+                <div className="flex items-center justify-evenly gap-6 bg-slate-200">
+                    <div className="flex w-full max-w-lg flex-col gap-5 ">
+                        <p className="text-center text-4xl font-bold">
+                            Find your next job <br />
+                            from{" "}
+                            <span className="bg-gradient-to-r from-yellow-500 via-amber-300 to-yellow-300 bg-clip-text text-transparent">
+                                here
+                            </span>
+                            .
+                        </p>
 
-                    <div className="flex  gap-3 ">
-                        <Select items={categories} label="Category" size="sm">
-                            {(category) => (
-                                <SelectItem
-                                    key={category.value}
-                                    value={category.value}
-                                >
-                                    {category.label}
-                                </SelectItem>
-                            )}
-                        </Select>
+                        <div className="flex  gap-3 ">
+                            <Select
+                                items={categories}
+                                label="Category"
+                                size="sm"
+                            >
+                                {(category) => (
+                                    <SelectItem
+                                        key={category.value}
+                                        value={category.value}
+                                    >
+                                        {category.label}
+                                    </SelectItem>
+                                )}
+                            </Select>
 
-                        <Select items={types} label="Type" size="sm">
-                            {(type) => (
-                                <SelectItem key={type.value} value={type.value}>
-                                    {type.label}
-                                </SelectItem>
-                            )}
-                        </Select>
+                            <Select items={types} label="Type" size="sm">
+                                {(type) => (
+                                    <SelectItem
+                                        key={type.value}
+                                        value={type.value}
+                                    >
+                                        {type.label}
+                                    </SelectItem>
+                                )}
+                            </Select>
 
-                        <Select
-                            items={departments}
-                            label="Department"
-                            size="sm"
-                        >
-                            {(dept) => (
-                                <SelectItem key={dept.value} value={dept.value}>
-                                    {dept.label}
-                                </SelectItem>
-                            )}
-                        </Select>
+                            <Select
+                                items={departments}
+                                label="Department"
+                                size="sm"
+                            >
+                                {(dept) => (
+                                    <SelectItem
+                                        key={dept.value}
+                                        value={dept.value}
+                                    >
+                                        {dept.label}
+                                    </SelectItem>
+                                )}
+                            </Select>
+                        </div>
+                        <Button color="primary" variant="ghost" size="md">
+                            Find
+                        </Button>
                     </div>
-                </div>
 
-                <Image
-                    className="pointer-events-none pt-3"
-                    src={Item1.src}
-                    alt="Picture"
-                    width={400}
-                    height={400}
-                    priority
-                />
-            </div>
-        </section>
+                    <Image
+                        className="pointer-events-none pt-3"
+                        src={Item1.src}
+                        alt="Picture"
+                        width={400}
+                        height={400}
+                        priority
+                    />
+                </div>
+            </section>
+        </>
     );
 }
 
