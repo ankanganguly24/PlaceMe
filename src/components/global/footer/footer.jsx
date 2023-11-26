@@ -1,10 +1,44 @@
+"use client";
+
+import footer1 from "@/public/footer1.svg";
+import { Image } from "@nextui-org/react";
+import Link from "next/link";
+import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
+
 const Footer = () => {
     return (
-        <div>
-            <footer className="border-t-2 border-gray-300 bg-white py-4 text-center">
-                <p>Last Updated: 14-11-2023</p>
+        <>
+            <footer>
+                <div className="mt-4 flex items-center justify-around  bg-primary py-2 pl-2 text-white">
+                    <div className="flex gap-2">
+                        <a href="https://www.instagram.com/inspiriaindia/?hl=en">
+                            {" "}
+                            <FaInstagramSquare size={50} />{" "}
+                        </a>
+                        <a href="https://www.facebook.com/inspiriaindia">
+                            {" "}
+                            <FaFacebook size={50} />{" "}
+                        </a>
+                    </div>
+                    <a href="https://www.inspiria.edu.in/">
+                        <Image
+                            className="pointer-events-none"
+                            src={footer1.src}
+                            alt="mission"
+                            width={200}
+                            height={200}
+                            priority
+                        />
+                    </a>
+                    <Link
+                        href="/signin"
+                        className="rounded-md border-2 border-yellow-500 p-4 italic transition duration-400 ease-in-out hover:bg-yellow-200 hover:text-black"
+                    >
+                        Signin for our job posting
+                    </Link>
+                </div>
             </footer>
-        </div>
+        </>
     );
 };
 
