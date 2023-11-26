@@ -32,7 +32,7 @@ const Footer = () => {
                     </a>
                     <Link
                         href="/signin"
-                        className="rounded-md border-2 border-yellow-500 p-4 italic transition duration-400 ease-in-out hover:bg-yellow-200 hover:text-black"
+                        className="rounded-md border-2 border-yellow-500 p-4  transition duration-400 ease-in-out hover:bg-yellow-200 hover:text-black"
                     >
                         Signin for our job posting
                     </Link>
