@@ -2,7 +2,7 @@
 
 import { postJob } from "@/src/actions/job";
 import NavbarHome from "@/src/components/global/navbar/navbar-home";
-import { useAuth } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import {
     Button,
     Card,
@@ -12,13 +12,12 @@ import {
     Divider,
     Image,
 } from "@nextui-org/react";
-import { is } from "date-fns/locale";
-import React, { useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useMutation } from "react-query";
 
 function Page() {
-    const { userId } = useAuth();
+    const { userId } = useUser();
 
     const [jobHeading, setJobHeading] = useState("");
     const [jobDescription, setJobDescription] = useState("");
@@ -45,15 +44,7 @@ function Page() {
             toast.error(err, { id: ctx?.toastId });
         },
     });
-    {
-        React.useEffect(() => {
-            document.body.style.overflowY = "hidden";
 
-            return () => {
-                document.body.style.overflowY = "auto";
-            };
-        }, []);
-    }
     return (
         <>
             <NavbarHome />

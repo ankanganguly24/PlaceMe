@@ -1,19 +1,6 @@
-"use client";
-
 import NavbarHome from "@/src/components/global/navbar/navbar-home";
-import React from "react";
 
 function Layout({ children }) {
-    {
-        React.useEffect(() => {
-            document.body.style.overflowY = "hidden";
-
-            return () => {
-                document.body.style.overflowY = "auto";
-            };
-        }, []);
-    }
-
     return (
         <>
             <NavbarHome />
