@@ -3,6 +3,7 @@
 import { homeMenuConfig as items } from "@/src/config/menu";
 import { siteConfig } from "@/src/config/site";
 import { cn } from "@/src/lib/utils";
+import { useUser } from "@clerk/nextjs";
 import {
     Button,
     Dropdown,
@@ -24,6 +25,8 @@ import LoginButton from "../buttons/login-button";
 
 function NavbarHome() {
     const router = useRouter();
+
+    const { user } = useUser();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -133,7 +136,15 @@ function NavbarHome() {
 
             <NavbarContent justify="end">
                 <NavbarItem>
-                    <LoginButton />
+                    {/* <LoginButton /> */}
+
+                    {user ? (
+                        <Button as={Link} href="/profile">
+                            {user.username}
+                        </Button>
+                    ) : (
+                        <LoginButton />
+                    )}
                 </NavbarItem>
             </NavbarContent>
         </Navbar>
