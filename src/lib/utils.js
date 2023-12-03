@@ -1,6 +1,5 @@
 import { AxiosError } from "axios";
 import clsx from "clsx";
-import { MongooseError } from "mongoose";
 import { NextResponse } from "next/server";
 import { twMerge } from "tailwind-merge";
 import { ZodError } from "zod";
@@ -37,12 +36,7 @@ export function handleError(err) {
             code: err.response.status,
             message: err.message,
         });
-    else if (err instanceof MongooseError) {
-        return NextResponse.json({
-            code: 500,
-            message: err.message,
-        });
-    } else
+    else
         return NextResponse.json({
             code: 500,
             message: "Internal Server Error!",

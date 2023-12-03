@@ -4,13 +4,22 @@ import { BitFieldPermissions } from "./config/const";
 import { hasPermission } from "./lib/utils";
 
 export default authMiddleware({
-    ignoredRoutes: ["/", "/api/users", "/og.jpg", "/favicon.ico"],
+    ignoredRoutes: [
+        "/api/users",
+        "/og.jpg",
+        "/favicon.ico",
+        "/robots.txt",
+        "/sitemap.xml",
+        "/site.webmanifest",
+    ],
     publicRoutes: [
+        "/",
         "/signin",
         "/signup",
         "/about",
-        "/privacy",
-        "/tos",
+        "/tos(.*)",
+        "/privacy(.*)",
+        "/sso-callback(.*)",
         "/verification(.*)",
     ],
     async afterAuth(auth, req) {
@@ -76,5 +85,5 @@ export default authMiddleware({
 });
 
 export const config = {
-    matcher: ["/((?!.*\\..*|_next).*)"],
+    matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/"],
 };

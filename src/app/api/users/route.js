@@ -1,9 +1,8 @@
 import { env } from "@/env.mjs";
 import { createUser, updateUser } from "@/src/lib/mongo/user";
 import {
-    userDeleteSchema,
     userWebhookSchema,
-    webhookSchema,
+    webhookSchema
 } from "@/src/lib/validations/webhook";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
