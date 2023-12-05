@@ -1,6 +1,7 @@
 import { AxiosError } from "axios";
 import clsx from "clsx";
 import { NextResponse } from "next/server";
+import toast from "react-hot-toast";
 import { twMerge } from "tailwind-merge";
 import { ZodError } from "zod";
 import { BitFieldPermissions } from "../config/const";
@@ -59,4 +60,21 @@ export function formatTimestampToDate(ms) {
 export function hasPermission(userPermissions, requiredPermissions) {
     if (userPermissions & BitFieldPermissions.Administrator) return true;
     return (userPermissions & requiredPermissions) === requiredPermissions;
+}
+
+export function handleClientError(error, toastId) {
+    if (error instanceof ZodError) {
+        return toast.error(error.issues.map((x) => x.message).join(", "), {
+            id: toastId,
+        });
+    } else if (error instanceof Error) {
+        return toast.error(error.message, {
+            id: toastId,
+        });
+    } else {
+        console.error(error);
+        return toast.error("Something Went Wrong", {
+            id: toastId,
+        });
+    }
 }

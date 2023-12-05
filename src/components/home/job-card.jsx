@@ -1,11 +1,12 @@
 "use client";
 
-import { formatTimestampToDate } from "@/src/lib/utils";
+import { applyToJob } from "@/src/actions/apply";
+import { formatTimestampToDate, handleClientError } from "@/src/lib/utils";
+import { useUser } from "@clerk/nextjs";
 import {
     Button,
     Card,
     CardBody,
-    Image,
     Modal,
     ModalBody,
     ModalContent,
@@ -13,9 +14,32 @@ import {
     ModalHeader,
     useDisclosure,
 } from "@nextui-org/react";
+import toast from "react-hot-toast";
+import { useMutation } from "react-query";
 
-function Jobcard({ title, description, image, createdAt }) {
+function Jobcard({ title, description, createdAt, id }) {
+    const { user } = useUser();
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+    const { mutate: handleApply, isLoading } = useMutation({
+        onMutate: () => {
+            const toastId = toast.loading("Applying for the job...");
+            return { toastId };
+        },
+        mutationFn: async () => {
+            await applyToJob({
+                appliedBy: user.id,
+                jobId: id,
+            });
+        },
+        onSuccess: (_, __, ctx) => {
+            toast.success("Applied successfully", { id: ctx?.toastId });
+        },
+
+        onError: (error, _, ctx) => {
+            handleClientError(error, ctx?.toastId);
+        },
+    });
 
     return (
         <>
@@ -27,13 +51,6 @@ function Jobcard({ title, description, image, createdAt }) {
                 <CardBody>
                     <div className="flex  items-center justify-between gap-4 px-5">
                         <div className="flex items-center gap-5">
-                            <Image
-                                src={image}
-                                alt="company logo"
-                                radius="full"
-                                width={50}
-                                height={50}
-                            />
                             <div className=" space-y-3">
                                 <div className="space-y-2">
                                     <p className="font-bold">{title}</p>
@@ -83,7 +100,14 @@ function Jobcard({ title, description, image, createdAt }) {
                                 </ol>
                             </ModalBody>
                             <ModalFooter>
-                                <Button className="font-bold">Apply</Button>
+                                <Button
+                                    className="font-bold "
+                                    onPress={() => handleApply()}
+                                    isDisabled={isLoading}
+                                    isLoading={isLoading}
+                                >
+                                    Apply
+                                </Button>
                             </ModalFooter>
                         </>
                     )}
