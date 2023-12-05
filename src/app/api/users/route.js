@@ -1,8 +1,9 @@
 import { env } from "@/env.mjs";
 import { createUser, updateUser } from "@/src/lib/mongo/user";
+import { handleError } from "@/src/lib/utils";
 import {
     userWebhookSchema,
-    webhookSchema
+    webhookSchema,
 } from "@/src/lib/validations/webhook";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
@@ -57,19 +58,23 @@ export async function POST(req) {
         }
 
         case "user.updated": {
-            const { id, profile_image_url, username } =
-                userWebhookSchema.parse(data);
+            try {
+                const { id, profile_image_url, username } =
+                    userWebhookSchema.parse(data);
 
-            await updateUser({
-                id,
-                username,
-                imageUrl: profile_image_url,
-            });
+                await updateUser({
+                    id,
+                    username,
+                    imageUrl: profile_image_url,
+                });
 
-            return NextResponse.json({
-                code: 200,
-                message: "Ok",
-            });
+                return NextResponse.json({
+                    code: 200,
+                    message: "Ok",
+                });
+            } catch (err) {
+                return handleError(err);
+            }
         }
 
         default: {

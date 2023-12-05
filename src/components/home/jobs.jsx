@@ -1,37 +1,6 @@
 import { getJobs } from "@/src/lib/mongo/post";
 import Jobcard from "./job-card";
 
-// const jobs = [
-//     // {
-//     //     title: "Senior Frontend Developer",
-//     //     description:
-//     //         "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
-//     //     createdAt: 1636881645000,
-//     //     image: "https://picsum.photos/200/200",
-//     // },
-//     // {
-//     //     title: "Senior Backend Developer",
-//     //     description:
-//     //         "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
-//     //     createdAt: 1591372117000,
-//     //     image: "https://picsum.photos/200/200",
-//     // },
-//     // {
-//     //     title: "Senior Fullstack Developer",
-//     //     description:
-//     //         "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
-//     //     createdAt: 1025063798000,
-//     //     image: "https://picsum.photos/200/200",
-//     // },
-//     // {
-//     //     title: "Senior Frontend Developer",
-//     //     description:
-//     //         "Design, develop, and deploy the next generation of our product, working closely with our engineers and product team.",
-//     //     createdAt: 1075371950090,
-//     //     image: "https://picsum.photos/200/200",
-//     // },
-// ];
-
 async function Jobs() {
     const jobs = await getJobs();
 
