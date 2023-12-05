@@ -1,4 +1,4 @@
-import AdminProfile from "@/src/components/admin/adminprofile";
+import AdminProfile from "@/src/components/admin/admin-profile";
 import { getApplicants } from "@/src/lib/mongo/applicant";
 import { getJobs } from "@/src/lib/mongo/post";
 import { getAllUsers } from "@/src/lib/mongo/user";

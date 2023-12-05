@@ -1,6 +1,5 @@
 "use client";
 
-import { updateApplication } from "@/src/actions/apply";
 import { postJob } from "@/src/actions/job";
 import NavbarHome from "@/src/components/global/navbar/navbar-home";
 import { handleClientError } from "@/src/lib/utils";
@@ -17,13 +16,13 @@ import {
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useMutation } from "react-query";
+import ApplicantInfo from "./applicant-info";
 
 function AdminProfile({ jobs, applicants, users }) {
     const { userId } = useUser();
 
     const [jobHeading, setJobHeading] = useState("");
     const [jobDescription, setJobDescription] = useState("");
-    const [status, setStatus] = useState(null);
 
     const { mutate: handleJobPost } = useMutation({
         onMutate: () => {
@@ -48,31 +47,6 @@ function AdminProfile({ jobs, applicants, users }) {
         },
     });
 
-    const { mutate: handleUpdateApplication } = useMutation({
-        onMutate: () => {
-            const toastId = toast.loading(
-                status ? "Accepting..." : "Rejecting..."
-            );
-            return { toastId };
-        },
-        mutationFn: async ({ userId, jobId, reason }) => {
-            await updateApplication({
-                applicantId: userId,
-                jobId,
-                status,
-                reason,
-            });
-        },
-        onSuccess: (_, __, ctx) => {
-            toast.success("Accepted", { id: ctx?.toastId });
-        },
-        onError: (error, _, ctx) => {
-            handleClientError(error, ctx?.toastId);
-        },
-        onSettled: () => {
-            setStatus(null);
-        },
-    });
     return (
         <>
             <NavbarHome />
@@ -148,47 +122,12 @@ function AdminProfile({ jobs, applicants, users }) {
                         if (!user) return null;
 
                         return (
-                            <Card
-                                className="bg-primary text-white "
-                                key={applicant.id}
-                            >
-                                <CardBody>
-                                    <div>
-                                        <p className="font-bold">{job.title}</p>
-                                        <p>{job.description}</p>
-                                    </div>
-                                    <div>
-                                        <p className="font-bold">
-                                            {user.username}
-                                        </p>
-                                    </div>
-                                    <div className="flex flex-col gap-3">
-                                        <Button
-                                            onPress={() => {
-                                                setStatus("accept");
-                                                handleUpdateApplication({
-                                                    userId: user.userId,
-                                                    jobId: job._id,
-                                                });
-                                            }}
-                                        >
-                                            Accept
-                                        </Button>
-
-                                        <Button
-                                            onPress={() => {
-                                                setStatus("reject");
-                                                handleUpdateApplication({
-                                                    userId: user.userId,
-                                                    jobId: job._id,
-                                                });
-                                            }}
-                                        >
-                                            Reject
-                                        </Button>
-                                    </div>
-                                </CardBody>
-                            </Card>
+                            <ApplicantInfo
+                                user={user}
+                                key={user.id}
+                                job={job}
+                                applicant={applicant}
+                            />
                         );
                     })}
                 </div>

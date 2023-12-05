@@ -57,11 +57,19 @@ export function formatTimestampToDate(ms) {
     return `${day}/${month}/${year}`;
 }
 
+/**
+ * @param {number} userPermissions
+ * @param {number} requiredPermissions
+ */
 export function hasPermission(userPermissions, requiredPermissions) {
     if (userPermissions & BitFieldPermissions.Administrator) return true;
     return (userPermissions & requiredPermissions) === requiredPermissions;
 }
 
+/**
+ * @param {unknown} error
+ * @param {string} toastId
+ */
 export function handleClientError(error, toastId) {
     if (error instanceof ZodError) {
         return toast.error(error.issues.map((x) => x.message).join(", "), {
