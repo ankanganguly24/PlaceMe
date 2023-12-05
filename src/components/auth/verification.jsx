@@ -28,7 +28,7 @@ function Verification() {
                 .then(() => {
                     !isOtherDevice && setVerificationStatus("verified");
                     toast.success(
-                        "Welcome to DRVGO! You have successfully signed in"
+                        "Welcome to PLACEME! You have successfully signed in"
                     );
                 })
                 .catch((err) => {
