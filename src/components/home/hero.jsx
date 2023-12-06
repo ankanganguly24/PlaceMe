@@ -1,81 +1,8 @@
 "use client";
 
 import Item1 from "@/public/item1.png";
-import { Button, Select, SelectItem } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 import Image from "next/image";
-
-const categories = [
-    {
-        label: "All",
-        value: "all",
-    },
-    {
-        label: "IT",
-        value: "it",
-    },
-    {
-        label: "Marketing & Sales",
-        value: "marketing",
-    },
-    {
-        label: "Finance",
-        value: "finance",
-    },
-    {
-        label: "Human Resources",
-        value: "hr",
-    },
-    {
-        label: "Customer Service",
-        value: "customer",
-    },
-    {
-        label: "Graphic Design",
-        value: "design",
-    },
-    {
-        label: "Hospitality & Healthcare",
-        value: "healthcare",
-    },
-    {
-        label: "Others",
-        value: "others",
-    },
-];
-
-const types = [
-    {
-        label: "Full Time",
-        value: "full-time",
-    },
-    {
-        label: "Part Time",
-        value: "part-time",
-    },
-    {
-        label: "Internship",
-        value: "internship",
-    },
-];
-
-const departments = [
-    {
-        label: "BCA",
-        value: "bca",
-    },
-    {
-        label: "BBA",
-        value: "bba",
-    },
-    {
-        label: "BSC",
-        value: "bsc",
-    },
-    {
-        label: "BID",
-        value: "bid",
-    },
-];
 
 function Hero() {
     return (
@@ -92,47 +19,13 @@ function Hero() {
                             .
                         </p>
 
-                        <div className="flex  gap-3 ">
-                            <Select
-                                items={categories}
-                                label="Category"
-                                size="sm"
-                            >
-                                {(category) => (
-                                    <SelectItem
-                                        key={category.value}
-                                        value={category.value}
-                                    >
-                                        {category.label}
-                                    </SelectItem>
-                                )}
-                            </Select>
-
-                            <Select items={types} label="Type" size="sm">
-                                {(type) => (
-                                    <SelectItem
-                                        key={type.value}
-                                        value={type.value}
-                                    >
-                                        {type.label}
-                                    </SelectItem>
-                                )}
-                            </Select>
-
-                            <Select
-                                items={departments}
-                                label="Department"
-                                size="sm"
-                            >
-                                {(dept) => (
-                                    <SelectItem
-                                        key={dept.value}
-                                        value={dept.value}
-                                    >
-                                        {dept.label}
-                                    </SelectItem>
-                                )}
-                            </Select>
+                        <div className="mb-6 flex w-full flex-wrap gap-4 md:mb-0 md:flex-nowrap">
+                            <Input
+                                type="text"
+                                variant="underlined"
+                                label="Search"
+                                placeholder="Enter your preference job title"
+                            />
                         </div>
                         <Button color="primary" variant="ghost" size="md">
                             Find

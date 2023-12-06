@@ -1,5 +1,6 @@
 "use client";
 
+import { deleteJob } from "@/src/actions/deletejob";
 import { postJob } from "@/src/actions/job";
 import NavbarHome from "@/src/components/global/navbar/navbar-home";
 import { handleClientError } from "@/src/lib/utils";
@@ -19,7 +20,7 @@ import { useMutation } from "react-query";
 import ApplicantInfo from "./applicant-info";
 
 function AdminProfile({ jobs, applicants, users }) {
-    const { userId } = useUser();
+    const { user } = useUser();
 
     const [jobHeading, setJobHeading] = useState("");
     const [jobDescription, setJobDescription] = useState("");
@@ -33,9 +34,30 @@ function AdminProfile({ jobs, applicants, users }) {
             const { success } = await postJob({
                 title: jobHeading,
                 description: jobDescription,
-                postedBy: userId,
+                postedBy: user.id || users[1].userId,
             });
             if (!success) {
+                throw new Error("Something went wrong");
+            }
+        },
+        onSuccess: (_, __, ctx) => {
+            toast.success("Job posted successfully", { id: ctx?.toastId });
+        },
+        onError: (error, _, ctx) => {
+            handleClientError(error, ctx?.toastId);
+        },
+    });
+
+    const { mutate: deleteJobPost } = useMutation({
+        onMutate: () => {
+            const toastId = toast.loading("Deleting job...");
+            return { toastId };
+        },
+        mutationFn: async ({ jobId }) => {
+            const { deleteJobPost } = await deleteJob({
+                jobId,
+            });
+            if (!deleteJobPost) {
                 throw new Error("Something went wrong");
             }
         },
@@ -122,12 +144,26 @@ function AdminProfile({ jobs, applicants, users }) {
                         if (!user) return null;
 
                         return (
-                            <ApplicantInfo
-                                user={user}
-                                key={user.id}
-                                job={job}
-                                applicant={applicant}
-                            />
+                            <>
+                                <ApplicantInfo
+                                    user={user}
+                                    key={user.id}
+                                    job={job}
+                                    applicant={applicant}
+                                />
+                                <div>
+                                    <Button
+                                        className="bg-danger font-bold text-white"
+                                        onPress={() =>
+                                            deleteJobPost({
+                                                jobId: job._id,
+                                            })
+                                        }
+                                    >
+                                        Delete Job
+                                    </Button>
+                                </div>
+                            </>
                         );
                     })}
                 </div>

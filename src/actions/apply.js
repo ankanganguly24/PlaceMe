@@ -51,3 +51,15 @@ export async function updateApplication({
     await applicant.save();
     await db.disconnect();
 }
+
+export async function getAllRejectedApplications() {
+    await db.connect();
+
+    const rejectedApplicants = await Applicant.find({
+        rejectedAt: { $exists: true },
+    }).select("jobId appliedBy rejectedReason rejectedAt");
+
+    await db.disconnect();
+
+    return rejectedApplicants;
+}
